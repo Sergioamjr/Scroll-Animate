@@ -1,18 +1,31 @@
 import css from './style.scss';
-const { outerHeight: ScrollHeight } = window;
-const Elements = document.querySelectorAll('.animate');
 
-const checkElement = () => {
-  Elements.forEach(Element => {
-    Element.getBoundingClientRect().top <= ScrollHeight ?
-      Element.classList.add('active') :
-      Element.classList.remove('active');
-  })
+class ScrollAnimate {
+  constructor() {
+    const { outerHeight } = window;
+
+    this.A = [];
+    this.H = outerHeight;
+    this.D = 200;
+    this.A = document.querySelectorAll('.animate');
+
+    this.hasAnimate ();
+  }
+
+  hasAnimate () {
+    if (this.A.length > 0) {
+      window.setTimeout(() => { this.checkElement()}, this.D);
+      window.addEventListener('scroll', () => this.checkElement());
+    }
+  }
+
+  checkElement () {
+    this.A.forEach(E => {
+      E.getBoundingClientRect().top <= this.H ?
+        E.classList.add('active') :
+        E.classList.remove('active');
+    })
+  }
 }
 
-(function() {
-  if(Elements.length > 0) {
-    setTimeout(() => checkElement(), 200);
-    window.addEventListener('scroll', () => checkElement());
-  }
-})();
+export default ScrollAnimate;

@@ -6,11 +6,13 @@ module.exports = {
   devtool: "source-map",
   target: "web",
   entry: [
-    "./src/index.js"
+    "./index.js"
   ],
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "animate-scroll.min.js",
+    libraryTarget: 'umd',
+    library: 'ScrollAnimate',
   },
   module: {
     rules: [

@@ -4,8 +4,11 @@
   "description": "",
   "main": "dist/animate-scroll.min.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --watch"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
